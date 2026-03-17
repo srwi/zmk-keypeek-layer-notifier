@@ -1,0 +1,10 @@
+menu "KeyPeek Layer Notifier"
+
+config ZMK_KEYPEEK_LAYER_NOTIFIER
+    bool "Enable KeyPeek layer notifier"
+    default y
+    select RAW_HID
+    help
+      Sends layer and key position state events to a host app over Raw HID.
+
+endmenu
