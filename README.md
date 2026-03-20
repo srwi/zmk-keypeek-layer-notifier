@@ -33,14 +33,13 @@ ZMK feature module for sending [KeyPeek](https://github.com/srwi/keypeek) layer/
   ```yaml
   include:
     - board: nice_nano_v2
-      shield: iskra raw_hid_adapter # <-- required for Raw HID support
+      shield: <existing shields> raw_hid_adapter # <-- required for Raw HID support
       snippet: studio-rpc-usb-uart # <-- required for ZMK Studio support
   ```
 
-3. Enable Raw HID and ZMK Studio support in your `.conf` file:
+3. Enable ZMK Studio support in your `.conf` file:
 
   ```conf
-  CONFIG_RAW_HID=y
   CONFIG_ZMK_STUDIO=y
   ```
 

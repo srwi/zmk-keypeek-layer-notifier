@@ -2,9 +2,11 @@ menu "KeyPeek Layer Notifier"
 
 config ZMK_KEYPEEK_LAYER_NOTIFIER
     bool "Enable KeyPeek layer notifier"
-    default y
+    depends on !ZMK_SPLIT || ZMK_SPLIT_ROLE_CENTRAL
+    default y if !ZMK_SPLIT || ZMK_SPLIT_ROLE_CENTRAL
     select RAW_HID
     help
       Sends layer and key position state events to a host app over Raw HID.
+      On split keyboards this feature is enabled only on the central half.
 
 endmenu
