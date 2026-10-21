@@ -4,4 +4,5 @@ if(CONFIG_ZMK_KEYPEEK_LAYER_NOTIFIER)
   endif()
 
   target_sources(app PRIVATE src/layer_notifier.c)
+  target_sources_ifdef(CONFIG_ZMK_KEYPEEK_STUDIO_HID_RPC app PRIVATE src/studio_hid_rpc.c)
 endif()

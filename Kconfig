@@ -9,4 +9,24 @@ config ZMK_KEYPEEK_LAYER_NOTIFIER
       Sends layer and key position state events to a host app over Raw HID.
       On split keyboards this feature is enabled only on the central half.
 
+config ZMK_KEYPEEK_STUDIO_HID_RPC
+    bool "Tunnel ZMK Studio RPC over Raw HID (0xF2)"
+    depends on ZMK_KEYPEEK_LAYER_NOTIFIER && ZMK_STUDIO_RPC
+    default y
+    select RING_BUFFER
+    help
+      Enables ZMK Studio RPC communication over Raw HID reports (0xF2 header)
+      in addition to standard UART and BLE GATT transports. This allows
+      browser WebHID connections over both USB and Bluetooth (including on Windows).
+
+if ZMK_KEYPEEK_STUDIO_HID_RPC
+
+config ZMK_STUDIO_RPC_RX_BUF_SIZE
+    default 128
+
+config ZMK_STUDIO_RPC_TX_BUF_SIZE
+    default 128
+
+endif
+
 endmenu
